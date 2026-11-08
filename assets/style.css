@@ -46,6 +46,9 @@ h1, h2, h3, p { margin-top: 0; }
 .social-links { display: flex; align-items: center; gap: 7px; }
 .social-link { width: 37px; height: 37px; display: inline-grid; place-items: center; border: 1px solid rgba(255,208,91,.24); border-radius: 50%; color: var(--paper); background: rgba(242,139,45,.055); text-decoration: none; transition: color .2s, border-color .2s, background .2s, transform .2s; }
 .social-link svg { display: block; width: 17px; height: 17px; }
+.social-link--patreon { background: #F4EAD9;  border: 1px solid #FFC34F;  display: inline-flex;  align-items: center;  justify-content: center;}
+.social-link--patreon img {  display: block;  width: 22px;  height: 22px;  object-fit: contain;}
+.social-link--patreon:hover {  background: #FFC34F;  transform: translateY(-2px);}
 .social-link:hover, .social-link:focus-visible { color: var(--gold-light); border-color: var(--gold); background: rgba(242,139,45,.13); transform: translateY(-2px); outline: none; }
 .button { display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: 0 20px; border: 1px solid var(--gold); border-radius: 999px; color: var(--ink); background: var(--gold); font-size: .86rem; font-weight: 750; text-decoration: none; transition: transform .2s, background .2s, border-color .2s; }
 .button:hover { transform: translateY(-2px); background: var(--gold-light); border-color: var(--gold-light); }
