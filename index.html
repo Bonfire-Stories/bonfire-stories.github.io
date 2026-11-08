@@ -3,360 +3,126 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#100d0a">
+  <meta name="theme-color" content="#090f1a">
   <meta name="description" content="Bonfire — Storie intorno al fuoco. Podcast, actual play e progetti narrativi nati dal gioco di ruolo.">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="stylesheet" href="assets/style.css">
   <title>Bonfire — Storie intorno al fuoco</title>
-  <style>
-    :root {
-      --ink: #100d0a;
-      --ink-soft: #211812;
-      --paper: #f4ead9;
-      --paper-deep: #e8dbc6;
-      --gold: #f28b2d;
-      --gold-light: #ffc34f;
-      --rust: #bd4a1c;
-      --muted: #b8a998;
-      --line: rgba(244, 234, 217, .17);
-      --serif: Georgia, "Times New Roman", serif;
-      --sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      --max: 1120px;
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      color: var(--paper);
-      background: var(--ink);
-      font-family: var(--sans);
-      line-height: 1.6;
-    }
-    a { color: inherit; }
-    .wrap { width: min(var(--max), calc(100% - 48px)); margin: 0 auto; }
-    .eyebrow {
-      color: var(--gold);
-      font-size: .72rem;
-      font-weight: 700;
-      letter-spacing: .19em;
-      text-transform: uppercase;
-    }
-    .site-header {
-      position: absolute;
-      z-index: 5;
-      inset: 0 0 auto;
-      border-bottom: 1px solid rgba(244,234,217,.11);
-    }
-    .nav { min-height: 82px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
-    .brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; }
-    .brand-mark { width: 30px; height: 38px; display: block; }
-    .brand-name { font-family: var(--serif); font-size: 1.34rem; letter-spacing: .105em; }
-    .brand-name small { display: block; margin-top: -5px; color: var(--gold); font-family: var(--sans); font-size: .54rem; letter-spacing: .18em; }
-    .nav-links { display: flex; align-items: center; gap: 29px; }
-    .nav-links a { color: rgba(244,234,217,.78); font-size: .85rem; text-decoration: none; transition: color .2s; }
-    .nav-links a:hover { color: var(--gold-light); }
-    .nav-links .nav-cta { padding: 10px 16px; border: 1px solid rgba(242,139,45,.7); border-radius: 999px; color: var(--gold-light); }
-    .hero {
-      position: relative;
-      min-height: 720px;
-      display: flex;
-      align-items: center;
-      overflow: hidden;
-      background:
-        radial-gradient(ellipse at 77% 48%, rgba(189,74,28,.22), transparent 33%),
-        radial-gradient(ellipse at 72% 78%, rgba(242,139,45,.12), transparent 28%),
-        linear-gradient(115deg, #100d0a 0%, #1a120d 58%, #24150d 100%);
-    }
-    .hero::before {
-      content: ""; position: absolute; width: 620px; height: 620px; right: -80px; top: 95px;
-      border: 1px solid rgba(242,139,45,.14); border-radius: 50%;
-      box-shadow: 0 0 0 42px rgba(242,139,45,.025), 0 0 0 88px rgba(242,139,45,.02), 0 0 0 138px rgba(242,139,45,.015);
-    }
-    .hero::after {
-      content: ""; position: absolute; right: 5%; bottom: -180px; width: 530px; height: 370px;
-      background: radial-gradient(ellipse, rgba(220,91,27,.2), transparent 66%); filter: blur(20px);
-    }
-    .hero-inner { position: relative; z-index: 1; display: grid; grid-template-columns: 1.05fr .95fr; align-items: center; gap: 54px; padding-top: 100px; padding-bottom: 72px; }
-    .hero-copy { max-width: 650px; }
-    h1, h2, h3, p { margin-top: 0; }
-    h1 { max-width: 690px; margin: 18px 0 22px; font-family: var(--serif); font-size: clamp(3.55rem, 7vw, 6.8rem); font-weight: 400; letter-spacing: -.055em; line-height: .99; }
-    h1 em { color: var(--gold-light); font-weight: 400; }
-    .hero-lead { max-width: 560px; color: rgba(244,234,217,.78); font-size: clamp(1rem, 1.6vw, 1.15rem); line-height: 1.8; }
-    .actions { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 33px; }
-    .button { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 21px; border: 1px solid var(--gold); border-radius: 999px; color: var(--ink); background: var(--gold); font-size: .88rem; font-weight: 700; text-decoration: none; transition: transform .2s, background .2s; }
-    .button:hover { transform: translateY(-2px); background: var(--gold-light); }
-    .button.secondary { color: var(--paper); background: transparent; border-color: rgba(244,234,217,.35); }
-    .button.secondary:hover { border-color: var(--gold); color: var(--gold-light); }
-    .hero-art { min-height: 420px; position: relative; display: grid; place-items: center; }
-    .embers { position: absolute; inset: 0; overflow: hidden; }
-    .ember { position: absolute; display: block; width: 3px; height: 3px; border-radius: 50%; background: var(--gold-light); box-shadow: 0 0 13px 3px rgba(242,139,45,.3); }
-    .ember:nth-child(1){left:15%;top:19%}.ember:nth-child(2){left:78%;top:12%;width:2px;height:2px}.ember:nth-child(3){left:84%;top:66%}.ember:nth-child(4){left:23%;top:78%;width:2px;height:2px}.ember:nth-child(5){left:57%;top:8%}.ember:nth-child(6){left:10%;top:54%;width:2px;height:2px}.ember:nth-child(7){left:91%;top:39%;width:2px;height:2px}
-    .fire-emblem { position: relative; width: min(100%, 390px); aspect-ratio: 1; display: grid; place-items: center; }
-    .fire-emblem::before, .fire-emblem::after { content: ""; position: absolute; border: 1px solid rgba(242,139,45,.25); border-radius: 50%; inset: 7%; }
-    .fire-emblem::after { inset: 15%; border-color: rgba(242,139,45,.13); }
-    .fire-core { width: 54%; height: 67%; position: relative; display: grid; place-items: center; filter: drop-shadow(0 12px 42px rgba(242,91,24,.32)); }
-    .logo-emblem { width: min(100%, 440px); }
-    .logo-emblem::before { inset: 2%; border-color: rgba(242,139,45,.2); box-shadow: 0 0 0 32px rgba(242,139,45,.025), 0 0 0 72px rgba(242,139,45,.018); }
-    .logo-emblem::after { inset: 9%; }
-    .logo-emblem img { position: relative; z-index: 1; display: block; width: 100%; height: auto; filter: drop-shadow(0 12px 38px rgba(242,91,24,.22)); }
-    .fire-core svg { width: 100%; height: 100%; overflow: visible; }
-    .hero-caption { position: absolute; bottom: 1%; left: 50%; transform: translateX(-50%); color: rgba(244,234,217,.48); font-size: .67rem; letter-spacing: .2em; text-transform: uppercase; white-space: nowrap; }
-    .intro { padding: 112px 0 118px; color: var(--ink); background: var(--paper); }
-    .intro-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 80px; align-items: start; }
-    .section-title { max-width: 480px; font-family: var(--serif); font-size: clamp(2.4rem, 4.5vw, 4.1rem); font-weight: 400; letter-spacing: -.04em; line-height: 1.08; }
-    .intro .eyebrow, .work .eyebrow, .contact .eyebrow { color: var(--rust); }
-    .intro-text { max-width: 640px; color: #55483d; font-size: 1.06rem; line-height: 1.9; }
-    .intro-text strong { color: var(--ink); font-weight: 650; }
-    .rule { width: 64px; height: 1px; margin: 27px 0; background: var(--gold); }
-    .team { padding: 108px 0 116px; color: var(--ink); background: #f4ead9; }
-    .team-heading { display: flex; align-items: end; justify-content: space-between; gap: 48px; margin-bottom: 42px; }
-    .team-heading .section-title { max-width: 620px; margin-bottom: 0; }
-    .team-heading p { max-width: 390px; margin: 0 0 5px; color: #65584b; line-height: 1.85; }
-    .team-feature { display: grid; grid-template-columns: 1.08fr .92fr; gap: 34px; align-items: stretch; }
-    .team-photo-frame { position: relative; min-height: 350px; overflow: hidden; border: 1px solid rgba(16,13,10,.16); background: #211812; }
-    .team-photo-frame img { display: block; width: 100%; height: 100%; min-height: 350px; object-fit: cover; }
-    .team-photo-placeholder { display: none; min-height: 350px; height: 100%; place-items: center; align-content: center; gap: 14px; padding: 28px; color: rgba(244,234,217,.72); text-align: center; background: radial-gradient(ellipse at 50% 42%, rgba(242,139,45,.2), transparent 54%), linear-gradient(145deg, #2b1b11, #100d0a); }
-    .team-photo-placeholder svg { width: 46px; height: 46px; color: var(--gold-light); }
-    .team-photo-placeholder span { max-width: 250px; font-family: var(--serif); font-size: 1.35rem; line-height: 1.3; }
-    .team-note { display: flex; flex-direction: column; justify-content: center; padding: clamp(25px, 4vw, 48px); border: 1px solid rgba(16,13,10,.16); background: rgba(255,255,255,.3); }
-    .team-note .eyebrow { color: var(--rust); }
-    .team-note h3 { margin: 14px 0 15px; font-family: var(--serif); font-size: clamp(1.8rem, 3vw, 2.7rem); font-weight: 400; line-height: 1.12; }
-    .team-note p { margin: 0; color: #65584b; line-height: 1.9; }
-    .member-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 18px; }
-    .member-card { min-height: 205px; padding: 25px; border: 1px solid rgba(16,13,10,.16); background: rgba(255,255,255,.22); }
-    .member-number { display: inline-block; margin-bottom: 19px; color: var(--rust); font-family: var(--serif); font-size: 1rem; }
-    .member-card h3 { margin: 0 0 9px; font-family: var(--serif); font-size: 1.45rem; font-weight: 400; }
-    .member-card p { margin: 0; color: #65584b; font-size: .9rem; line-height: 1.75; }
-    .member-card .bio-hint { color: #8b7968; font-style: italic; }
-    .formats { padding: 112px 0 120px; background: #1a120e; }
-    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 40px; margin-bottom: 48px; }
-    .section-head .section-title { max-width: 590px; margin-bottom: 0; color: var(--paper); }
-    .section-head p { max-width: 350px; margin-bottom: 5px; color: var(--muted); }
-    .format-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-    .format-card { position: relative; min-height: 245px; padding: 31px; border: 1px solid var(--line); background: linear-gradient(145deg, rgba(255,255,255,.035), rgba(255,255,255,.012)); transition: border-color .2s, transform .2s; }
-    .format-card:hover { transform: translateY(-3px); border-color: rgba(242,139,45,.6); }
-    .format-number { color: var(--gold); font-family: var(--serif); font-size: 1rem; }
-    .format-card h3 { margin: 23px 0 10px; color: var(--paper); font-family: var(--serif); font-size: 1.8rem; font-weight: 400; }
-    .format-card p { max-width: 470px; margin: 0; color: #c7b8a6; font-size: .94rem; line-height: 1.8; }
-    .work { padding: 112px 0 116px; color: var(--ink); background: var(--paper-deep); }
-    .work-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 75px; }
-    .work-copy p { max-width: 450px; color: #55483d; line-height: 1.85; }
-    .work-list { border-top: 1px solid rgba(16,13,10,.2); }
-    .work-item { display: grid; grid-template-columns: 46px 1fr; gap: 20px; padding: 22px 0; border-bottom: 1px solid rgba(16,13,10,.2); }
-    .work-item span { color: var(--rust); font-family: var(--serif); font-size: 1.1rem; }
-    .work-item h3 { margin: 0 0 5px; font-family: var(--serif); font-size: 1.35rem; font-weight: 400; }
-    .work-item p { margin: 0; color: #65584b; font-size: .9rem; }
-    .contact { position: relative; overflow: hidden; padding: 112px 0 110px; background: #100d0a; }
-    .contact::after { content: ""; position: absolute; width: 540px; height: 540px; right: -230px; bottom: -350px; border: 1px solid rgba(242,139,45,.2); border-radius: 50%; box-shadow: 0 0 0 55px rgba(242,139,45,.025), 0 0 0 110px rgba(242,139,45,.02); }
-    .contact-inner { position: relative; z-index: 1; max-width: 760px; }
-    .contact h2 { margin: 16px 0 20px; font-family: var(--serif); font-size: clamp(2.8rem, 5vw, 5rem); font-weight: 400; letter-spacing: -.045em; line-height: 1.05; }
-    .contact p { max-width: 570px; color: rgba(244,234,217,.72); line-height: 1.85; }
-    .contact-note { margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--line); color: rgba(244,234,217,.5); font-size: .83rem; }
-    footer { padding: 28px 0; border-top: 1px solid var(--line); background: #0b0907; }
-    .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 20px; color: rgba(244,234,217,.55); font-size: .77rem; }
-    .footer-brand { color: var(--gold-light); font-family: var(--serif); letter-spacing: .12em; }
-    .footer-brandline { display: flex; align-items: center; gap: 12px; color: var(--gold-light); }
-    .footer-brandline img { width: 44px; height: 44px; object-fit: contain; }
-    .footer-brandline span { font-family: var(--serif); letter-spacing: .04em; }
-    .mobile-menu-note { display: none; }
-    @media (max-width: 760px) {
-      .wrap { width: min(var(--max), calc(100% - 36px)); }
-      .nav { min-height: 72px; }
-      .nav-links { gap: 14px; }
-      .nav-links a:not(.nav-cta) { display: none; }
-      .nav-links .nav-cta { padding: 8px 12px; font-size: .78rem; }
-      .hero { min-height: auto; }
-      .hero-inner { grid-template-columns: 1fr; gap: 8px; padding-top: 142px; padding-bottom: 46px; }
-      h1 { font-size: clamp(3.45rem, 17vw, 5.5rem); }
-      .hero-art { min-height: 265px; margin-top: 0; }
-      .fire-emblem { width: 260px; }
-      .intro, .team, .formats, .work, .contact { padding: 78px 0; }
-      .team-heading { display: block; margin-bottom: 28px; }
-      .team-heading p { margin-top: 17px; }
-      .team-feature { grid-template-columns: 1fr; gap: 14px; }
-      .team-photo-frame, .team-photo-frame img, .team-photo-placeholder { min-height: 245px; }
-      .member-grid { grid-template-columns: 1fr; gap: 12px; margin-top: 14px; }
-      .member-card { min-height: auto; padding: 22px; }
-      .intro-grid, .work-grid { grid-template-columns: 1fr; gap: 25px; }
-      .section-head { display: block; margin-bottom: 30px; }
-      .section-head p { margin-top: 18px; }
-      .format-grid { grid-template-columns: 1fr; }
-      .format-card { min-height: 205px; padding: 25px; }
-      .footer-inner { align-items: flex-start; flex-direction: column; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      *, *::before, *::after { transition-duration: .01ms !important; }
-    }
-  </style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="wrap nav">
-      <a class="brand" href="#inizio" aria-label="Bonfire, torna all'inizio">
-        <svg class="brand-mark" viewBox="0 0 40 50" aria-hidden="true">
-          <path d="M21 2C24 13 12 16 15 27c-5-3-7-8-7-8C1 31 7 46 20 48c13-2 20-16 12-28-1 7-5 9-7 10C29 18 23 9 21 2Z" fill="#f28b2d"/>
-          <path d="M21 26c4 6 7 10 3 16-2 3-7 3-9 0-3-5 2-10 6-16Z" fill="#f4ead9" opacity=".9"/>
-        </svg>
-        <span class="brand-name">BONFIRE<small>STORIE INTORNO AL FUOCO</small></span>
-      </a>
-      <nav class="nav-links" aria-label="Navigazione principale">
-        <a href="#progetto">Il progetto</a>
-        <a href="#team">Chi siamo</a>
-        <a href="#formati">Cosa facciamo</a>
-        <a href="#collaborazioni">Collaborazioni</a>
-        <a class="nav-cta" href="#contatti">Parliamone</a>
-      </nav>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html#inizio" aria-label="Bonfire, torna all'inizio">
+      <img class="brand-mark" src="assets/bonfire-logo.png" alt="">
+      <span class="brand-name">BONFIRE<small>STORIE INTORNO AL FUOCO</small></span>
+    </a>
+    <nav class="nav-links" aria-label="Navigazione principale">
+      <a href="#progetto">Il progetto</a>
+      <a href="#formati">Cosa facciamo</a>
+      <a href="#collaborazioni">Collaborazioni</a>
+      <a href="chi-siamo.html">Chi siamo</a>
+    </nav>
+    <div class="nav-right">
+      <div class="social-links" aria-label="Seguici sui social">
+        <a class="social-link" href="https://www.instagram.com/bonfire.podcast.gdr/" target="_blank" rel="noopener noreferrer" aria-label="Instagram Bonfire" title="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.2" y="3.2" width="17.6" height="17.6" rx="5"/><circle cx="12" cy="12" r="4.1"/><circle cx="17.6" cy="6.6" r=".8" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a class="social-link" href="https://open.spotify.com/search/Bonfire%20Storie%20attorno%20al%20fuoco" target="_blank" rel="noopener noreferrer" aria-label="Cerca Bonfire su Spotify" title="Spotify — ricerca Bonfire">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M5.7 9.1c4.5-1.3 9.4-.9 13.1 1.2" fill="none" stroke="#090f1a" stroke-width="1.65" stroke-linecap="round"/><path d="M6.5 12.2c3.8-1 8-.6 11.1 1.2" fill="none" stroke="#090f1a" stroke-width="1.55" stroke-linecap="round"/><path d="M7.4 15.1c3.1-.7 6.4-.3 8.9 1.1" fill="none" stroke="#090f1a" stroke-width="1.45" stroke-linecap="round"/></svg>
+        </a>
+        <a class="social-link" href="https://www.youtube.com/results?search_query=Bonfire+Storie+intorno+al+fuoco" target="_blank" rel="noopener noreferrer" aria-label="Cerca Bonfire su YouTube" title="YouTube — ricerca Bonfire">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.2 7a3 3 0 0 0-2.1-2.1C19.2 4.4 12 4.4 12 4.4s-7.2 0-9.1.5A3 3 0 0 0 .8 7 31 31 0 0 0 .3 12a31 31 0 0 0 .5 5 3 3 0 0 0 2.1 2.1c1.9.5 9.1.5 9.1.5s7.2 0 9.1-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-5 31 31 0 0 0-.5-5Z"/><path d="m9.6 15.6 6.2-3.6-6.2-3.6v7.2Z" fill="#090f1a"/></svg>
+        </a>
+      </div>
+      <a class="button nav-contact" href="#contatti">Parliamone</a>
+      <a class="mobile-team-link" href="chi-siamo.html">Chi siamo</a>
     </div>
-  </header>
-
-  <main>
-    <section class="hero" id="inizio">
-      <div class="wrap hero-inner">
-        <div class="hero-copy">
-          <div class="eyebrow">Un progetto indipendente di storie e gioco</div>
-          <h1>Le storie nascono <em>intorno al fuoco.</em></h1>
-          <p class="hero-lead">Bonfire racconta storie nate dal gioco di ruolo. Podcast, actual play e progetti narrativi costruiti da persone che amano immaginare, giocare e condividere mondi.</p>
-          <div class="actions">
-            <a class="button" href="#formati">Scopri Bonfire</a>
-            <a class="button secondary" href="#contatti">Collabora con noi</a>
-          </div>
-        </div>
-        <div class="hero-art" aria-hidden="true">
-          <div class="embers"><i class="ember"></i><i class="ember"></i><i class="ember"></i><i class="ember"></i><i class="ember"></i><i class="ember"></i><i class="ember"></i></div>
-          <div class="fire-emblem logo-emblem">
-            <img src="assets/bonfire-logo.png" alt="Logo Bonfire — Storie intorno al fuoco">
-            <div class="hero-caption">Storie · Gioco · Immaginazione</div>
-          </div>
+  </div>
+</header>
+<main>
+  <section class="hero" id="inizio">
+    <div class="wrap hero-inner">
+      <div class="hero-copy">
+        <div class="eyebrow">Un progetto indipendente di storie e gioco</div>
+        <h1>Le storie nascono <em>intorno al fuoco.</em></h1>
+        <p class="hero-lead">Bonfire racconta storie nate dal gioco di ruolo. Podcast, actual play e progetti narrativi costruiti da persone che amano immaginare, giocare e condividere mondi.</p>
+        <div class="actions">
+          <a class="button" href="#formati">Scopri Bonfire</a>
+          <a class="button secondary" href="#contatti">Collabora con noi</a>
         </div>
       </div>
-    </section>
+      <div class="hero-art">
+        <img class="hero-logo" src="assets/bonfire-logo.png" alt="Bonfire — Storie intorno al fuoco: il nostro falò tra le montagne.">
+      </div>
+    </div>
+  </section>
 
-    <section class="intro" id="progetto">
-      <div class="wrap intro-grid">
+  <section class="intro" id="progetto">
+    <div class="wrap intro-grid">
+      <div>
+        <div class="eyebrow">Il progetto</div>
+        <h2 class="section-title">Non ci limitiamo a raccontare storie. Le giochiamo.</h2>
+        <div class="rule"></div>
+      </div>
+      <div class="intro-text">
+        <p><strong>Bonfire — Storie intorno al fuoco</strong> è un progetto indipendente dedicato alla narrazione attraverso il gioco di ruolo. Ci piace partire da un tavolo, da un gruppo di persone e da una storia da scoprire insieme.</p>
+        <p>Registriamo le nostre sessioni, le trasformiamo in esperienze audio curate e sviluppiamo progetti che possono continuare a vivere anche oltre il podcast: avventure, materiali di gioco, paesaggi sonori e collaborazioni.</p>
+        <p>Il nostro obiettivo è condividere storie capaci di coinvolgere chi gioca da anni e chi non ha mai tirato un dado.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="formats" id="formati">
+    <div class="wrap">
+      <div class="section-head">
         <div>
-          <div class="eyebrow">Il progetto</div>
-          <h2 class="section-title">Non ci limitiamo a raccontare storie. Le giochiamo.</h2>
-          <div class="rule"></div>
+          <div class="eyebrow">Le nostre attività</div>
+          <h2 class="section-title">Un mondo di storie, diversi modi per viverle.</h2>
         </div>
-        <div class="intro-text">
-          <p><strong>Bonfire — Storie intorno al fuoco</strong> è un progetto indipendente dedicato alla narrazione attraverso il gioco di ruolo. Ci piace partire da un tavolo, da un gruppo di persone e da una storia da scoprire insieme.</p>
-          <p>Registriamo le nostre sessioni, le trasformiamo in esperienze audio curate e sviluppiamo progetti che possono continuare a vivere anche oltre il podcast: avventure, materiali di gioco, paesaggi sonori e collaborazioni.</p>
-          <p>Il nostro obiettivo è condividere storie capaci di coinvolgere chi gioca da anni e chi non ha mai tirato un dado.</p>
-        </div>
+        <p>Il gioco di ruolo è il punto di partenza. La narrazione è il filo che unisce i nostri progetti.</p>
       </div>
-    </section>
-
-    <section class="team" id="team">
-      <div class="wrap">
-        <div class="team-heading">
-          <div>
-            <div class="eyebrow">Le persone dietro Bonfire</div>
-            <h2 class="section-title">Prima delle storie, ci siamo noi.</h2>
-          </div>
-          <p>Bonfire è fatto di tre persone, delle loro voci e di tutto quello che succede intorno a un tavolo: idee, tentativi, risate, discussioni e storie che prendono forma insieme.</p>
-        </div>
-        <div class="team-feature">
-          <div class="team-photo-frame">
-            <!-- Inserire la foto di gruppo in assets/foto-team.jpg. Il riquadro mostra un segnaposto finché il file non è presente. -->
-            <img src="assets/foto-team.jpg" alt="I tre membri del team Bonfire" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
-            <div class="team-photo-placeholder" aria-label="Spazio riservato alla fotografia del team">
-              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="5" y="9" width="38" height="30" rx="2"/><circle cx="18" cy="20" r="4"/><path d="m8 35 11-10 7 6 5-5 9 9"/></svg>
-              <span>Una foto, tre voci, tante storie da condividere.</span>
-            </div>
-          </div>
-          <div class="team-note">
-            <div class="eyebrow">Scopri il team</div>
-            <h3>Non siamo soltanto le voci dietro al microfono.</h3>
-            <p>Siamo le persone che immaginano le storie, preparano le sessioni, si siedono al tavolo e poi lavorano perché quelle serate possano arrivare anche a chi ci ascolta. Bonfire nasce dalla voglia di condividere tutto questo.</p>
-          </div>
-        </div>
-        <div class="member-grid">
-          <article class="member-card">
-            <span class="member-number">01 / IL TEAM</span>
-            <h3>Nome e cognome</h3>
-            <p class="bio-hint">Aggiungi una breve descrizione personale: cosa fai in Bonfire, cosa ami del gioco e quale contributo porti alle nostre storie.</p>
-          </article>
-          <article class="member-card">
-            <span class="member-number">02 / IL TEAM</span>
-            <h3>Nome e cognome</h3>
-            <p class="bio-hint">Aggiungi una breve descrizione personale: cosa fai in Bonfire, cosa ami del gioco e quale contributo porti alle nostre storie.</p>
-          </article>
-          <article class="member-card">
-            <span class="member-number">03 / IL TEAM</span>
-            <h3>Nome e cognome</h3>
-            <p class="bio-hint">Aggiungi una breve descrizione personale: cosa fai in Bonfire, cosa ami del gioco e quale contributo porti alle nostre storie.</p>
-          </article>
-        </div>
+      <div class="format-grid">
+        <article class="format-card"><div class="format-number">01 / ASCOLTARE</div><h3>Podcast & Actual Play</h3><p>Sessioni di gioco trasformate in episodi audio, con una cura particolare per ritmo, narrazione, montaggio e paesaggio sonoro.</p></article>
+        <article class="format-card"><div class="format-number">02 / GIOCARE</div><h3>Avventure & progetti GDR</h3><p>Storie originali, esperienze di gioco e materiali pensati per portare altre persone intorno al tavolo.</p></article>
+        <article class="format-card"><div class="format-number">03 / ESPLORARE</div><h3>Progetti narrativi</h3><p>Ambientazioni, personaggi e contenuti che possono prendere forme diverse: dal racconto ai materiali editoriali.</p></article>
+        <article class="format-card"><div class="format-number">04 / COLLABORARE</div><h3>Produzioni speciali</h3><p>Actual play, presentazioni, dimostrazioni e progetti realizzati insieme a editori, autori, piattaforme e realtà del settore.</p></article>
       </div>
-    </section>
-
-    <section class="formats" id="formati">
-      <div class="wrap">
-        <div class="section-head">
-          <div>
-            <div class="eyebrow">Le nostre attività</div>
-            <h2 class="section-title">Un mondo di storie, diversi modi per viverle.</h2>
-          </div>
-          <p>Il gioco di ruolo è il punto di partenza. La narrazione è il filo che unisce i nostri progetti.</p>
-        </div>
-        <div class="format-grid">
-          <article class="format-card">
-            <div class="format-number">01 / ASCOLTARE</div>
-            <h3>Podcast & Actual Play</h3>
-            <p>Sessioni di gioco trasformate in episodi audio, con una cura particolare per ritmo, narrazione, montaggio e paesaggio sonoro.</p>
-          </article>
-          <article class="format-card">
-            <div class="format-number">02 / GIOCARE</div>
-            <h3>Avventure & progetti GDR</h3>
-            <p>Storie originali, esperienze di gioco e materiali pensati per portare altre persone intorno al tavolo.</p>
-          </article>
-          <article class="format-card">
-            <div class="format-number">03 / ESPLORARE</div>
-            <h3>Progetti narrativi</h3>
-            <p>Ambientazioni, personaggi e contenuti che possono prendere forme diverse: dal racconto ai materiali editoriali.</p>
-          </article>
-          <article class="format-card">
-            <div class="format-number">04 / COLLABORARE</div>
-            <h3>Produzioni speciali</h3>
-            <p>Actual play, presentazioni, dimostrazioni e progetti realizzati insieme a editori, autori, piattaforme e realtà del settore.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="work" id="collaborazioni">
-      <div class="wrap work-grid">
-        <div class="work-copy">
-          <div class="eyebrow">Lavoriamo insieme</div>
-          <h2 class="section-title">Le buone storie si costruiscono insieme.</h2>
-          <div class="rule"></div>
-          <p>Ci piace incontrare persone e realtà che condividono la curiosità per il gioco e la voglia di raccontare. Quando nasce un'idea, ci sediamo a parlarne, capiamo cosa possiamo costruire insieme e come farlo nel modo giusto per tutti.</p>
-          <p>Per noi una buona collaborazione nasce da un'idea condivisa, dal rispetto del lavoro di ciascuno e dalla voglia di fare qualcosa che valga la pena raccontare.</p>
-        </div>
-        <div class="work-list">
-          <article class="work-item"><span>01</span><div><h3>Editori e autori</h3><p>Presentazioni, actual play e contenuti dedicati a giochi e ambientazioni.</p></div></article>
-          <article class="work-item"><span>02</span><div><h3>Piattaforme e servizi</h3><p>Dimostrazioni d'uso, sessioni registrate e progetti editoriali condivisi.</p></div></article>
-          <article class="work-item"><span>03</span><div><h3>Creator e community</h3><p>Collaborazioni, eventi, conversazioni e produzioni speciali.</p></div></article>
-          <article class="work-item"><span>04</span><div><h3>Progetti su misura</h3><p>Valutiamo proposte che mettano al centro la storia e il lavoro creativo.</p></div></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="contact" id="contatti">
-      <div class="wrap contact-inner">
-        <div class="eyebrow">Contatti</div>
-        <h2>Hai una storia<br>da costruire con noi?</h2>
-        <p>Per collaborazioni, proposte editoriali e progetti speciali, scrivici. Raccontaci l'idea, gli obiettivi e cosa immagini di realizzare insieme a Bonfire.</p>
-        <!-- TODO: sostituire il testo seguente con l'indirizzo email ufficiale prima della pubblicazione. -->
-        <div class="contact-note"><strong>Contatto email da inserire prima della pubblicazione.</strong><br>Consigliato: un indirizzo dedicato alle collaborazioni sul dominio Bonfire.</div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="wrap footer-inner">
-      <div class="footer-brandline"><img src="assets/bonfire-logo.png" alt="" aria-hidden="true"><span>Storie intorno al fuoco</span></div>
-      <div>© <span id="year">2026</span> Bonfire Stories</div>
     </div>
-  </footer>
+  </section>
+
+  <section class="work" id="collaborazioni">
+    <div class="wrap work-grid">
+      <div class="work-copy">
+        <div class="eyebrow">Lavoriamo insieme</div>
+        <h2 class="section-title">Le buone storie si costruiscono insieme.</h2>
+        <div class="rule"></div>
+        <p>Ci piace incontrare persone e realtà che condividono la curiosità per il gioco e la voglia di raccontare. Quando nasce un'idea, ci sediamo a parlarne, capiamo cosa possiamo costruire insieme e come farlo nel modo giusto per tutti.</p>
+        <p>Per noi una buona collaborazione nasce da un'idea condivisa, dal rispetto del lavoro di ciascuno e dalla voglia di fare qualcosa che valga la pena raccontare.</p>
+      </div>
+      <div class="work-list">
+        <article class="work-item"><span>01</span><div><h3>Editori e autori</h3><p>Presentazioni, actual play e contenuti dedicati a giochi e ambientazioni.</p></div></article>
+        <article class="work-item"><span>02</span><div><h3>Piattaforme e servizi</h3><p>Dimostrazioni d'uso, sessioni registrate e progetti editoriali condivisi.</p></div></article>
+        <article class="work-item"><span>03</span><div><h3>Creator e community</h3><p>Collaborazioni, eventi, conversazioni e produzioni speciali.</p></div></article>
+        <article class="work-item"><span>04</span><div><h3>Progetti su misura</h3><p>Valutiamo proposte che mettano al centro la storia e il lavoro creativo.</p></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contatti">
+    <div class="wrap contact-inner">
+      <div class="eyebrow">Contatti</div>
+      <h2>Hai una storia<br>da costruire con noi?</h2>
+      <p>Per collaborazioni, proposte editoriali e progetti speciali, scrivici. Raccontaci l'idea, gli obiettivi e cosa immagini di realizzare insieme a Bonfire.</p>
+      <div class="contact-note"><strong>Contatto email da inserire prima della pubblicazione.</strong><br>Consigliato: un indirizzo dedicato alle collaborazioni sul dominio Bonfire.</div>
+      <p style="margin-top:22px"><a class="button secondary" href="chi-siamo.html">Conosci le persone dietro Bonfire</a></p>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="wrap footer-inner">
+    <div class="footer-brandline"><img src="assets/bonfire-logo.png" alt=""><span>Storie intorno al fuoco</span></div>
+    <div>© <span id="year">2026</span> Bonfire Stories</div>
+  </div>
+</footer>
 </body>
 </html>
