@@ -164,10 +164,10 @@ footer { padding: 27px 0; border-top: 1px solid var(--line); background: var(--i
   .footer-inner { align-items: flex-start; flex-direction: column; }
   .about-hero { padding: calc(var(--header-h) + 54px) 0 56px; }
   .about-team { padding: 70px 0 78px; }
-  .about-team-intro { grid-template-columns: 1fr; gap: 18px; margin-bottom: 28px; }
+  .about-team-intro p { max-width: 440px; margin: 0; color: var(--muted); line-height: 1.9; }
   .team-photo-frame, .team-photo-frame img, .team-photo-placeholder { min-height: 250px; }
   .member-grid { grid-template-columns: 1fr; gap: 12px; margin-top: 13px; }
-  .member-card { min-height: auto; padding: 23px; }
+  .member-card p { margin: 0; color: #c7c1b8; font-size: .92rem; line-height: 1.8; }
   .about-invite { padding: 58px 0; }
   .about-invite-inner { align-items: flex-start; flex-direction: column; }
 }
