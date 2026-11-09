@@ -114,10 +114,10 @@ footer { padding: 27px 0; border-top: 1px solid var(--line); background: var(--i
 .about-team-intro .eyebrow { color: var(--rust); }
 .about-team-intro .section-title { color: var(--ink); }
 .about-team-intro p { max-width: 440px; margin: 0; color: #55483d; line-height: 1.9; }
-.team-photo-frame { position: relative; min-height: 390px; overflow: hidden; border: 2px solid rgba(255,208,91,.55); background: radial-gradient(ellipse at 50% 42%, rgba(242,139,45,.18), transparent 55%), linear-gradient(145deg, #172438, #090f1a); }
+.team-photo-frame { position: relative; min-height: 390px; overflow: hidden; border: 2px solid var(--rust); background: var(--paper); }
 .team-photo-frame img { display: block; width: 100%; height: 100%; min-height: 390px; object-fit: cover; }
-.team-photo-placeholder { display: grid; min-height: 390px; height: 100%; place-items: center; align-content: center; gap: 14px; padding: 28px; color: rgba(244,234,217,.88); text-align: center; }
-.team-photo-placeholder svg { width: 46px; height: 46px; color: var(--gold-light); }
+.team-photo-placeholder { display: grid; min-height: 390px; height: 100%; place-items: center; align-content: center; gap: 14px; padding: 28px; color: var(--ink); text-align: center; background: var(--paper); }
+.team-photo-placeholder svg { width: 46px; height: 46px; color: var(--rust); }
 .team-photo-placeholder span { max-width: 350px; font-family: var(--serif); font-size: 1.5rem; line-height: 1.35; }
 .member-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 18px; }
 .member-card { min-height: 220px; padding: 27px; border: 1px solid rgba(9,15,26,.18); background: rgba(255,255,255,.38); }
