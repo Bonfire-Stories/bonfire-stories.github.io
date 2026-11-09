@@ -120,7 +120,7 @@ footer { padding: 27px 0; border-top: 1px solid var(--line); background: var(--i
 .team-photo-placeholder span { max-width: 350px; font-family: var(--serif); font-size: 1.5rem; line-height: 1.35; }
 .member-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 18px; }
 .member-card { min-height: 220px; padding: 27px; border: 1px solid rgba(244,234,217,.17); background: rgba(255,255,255,.035); }
-.member-number { display: inline-block; margin-bottom: 18px; color: var(--gold); font-family: var(--serif); font-size: 1rem; }
+.member-number { display: inline-block; margin-bottom: 18px; color: var(--gold); font-family: var(--sans); font-size: .72rem; font-weight: 750; letter-spacing: .19em; text-transform: uppercase;}
 .member-card h3 { margin: 0 0 9px; color: var(--paper); font-family: var(--serif); font-size: 1.5rem; font-weight: 400; }
 .member-card p { margin: 0; color: #c7c1b8; font-size: .92rem; line-height: 1.8; }
 .about-invite { padding: 76px 0; color: var(--ink); background: var(--paper-deep); }
