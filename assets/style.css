@@ -106,9 +106,9 @@ footer { padding: 27px 0; border-top: 1px solid var(--line); background: var(--i
 .footer-brandline span { font-family: var(--serif); letter-spacing: .04em; }
 
 /* About page */
-.about-hero { padding: calc(var(--header-h) + 78px) 0 76px; color: var(--ink); background: linear-gradient(135deg, var(--paper) 0%, #e7d7bd 100%); }
+.about-hero { padding: calc(var(--header-h) + 78px) 0 76px; color: var(--paper); background: linear-gradient(135deg, var(--ink) 0%, #55483d 100%); }
 .about-hero h1 { max-width: 850px; margin: 17px 0 22px; font-size: clamp(3rem, 6vw, 5.7rem); }
-.about-hero p { max-width: 720px; color: #101a28; font-size: 1.07rem; line-height: 1.9; }
+.about-hero p { max-width: 720px; color: #55483d; font-size: 1.07rem; line-height: 1.9; }
 .about-team { padding: 92px 0 110px; background: #121c2a; }
 .about-team-intro { display: grid; grid-template-columns: 1fr .8fr; gap: 55px; align-items: end; margin-bottom: 42px; }
 .about-team-intro .section-title { color: var(--paper); }
