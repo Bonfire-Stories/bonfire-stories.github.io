@@ -1,11 +1,11 @@
 /* BONFIRE STORIES — shared site styles */
 :root {
-  --ink: #090f1a;
+  --ink: #090f1a; /* sfondo scuro */
   --ink-soft: #141e2d;
   --ink-deep: #070c14;
-  --paper: #f4ead9;
+  --paper: #f4ead9; /* sfondo chiaro */
   --paper-deep: #e9ddc9;
-  --gold: #f28b2d;
+  --gold: #f28b2d; /* per tutti gli eyebrow */
   --gold-light: #ffd05b;
   --rust: #b94e20;
   --muted: #b9b0a4;
@@ -72,8 +72,8 @@ h1 em { color: var(--rust); font-weight: 400; }
 /* Content sections */
 .intro { padding: 112px 0 118px; color: var(--ink); background: var(--paper); }
 .intro-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 80px; align-items: start; }
-.intro .eyebrow, .work .eyebrow, .contact .eyebrow { color: var(--rust); }
-.about-hero .eyebrow { color: var(--rust); }
+.intro .eyebrow, .work .eyebrow, .contact .eyebrow { color: var(--gold); }
+.about-hero .eyebrow { color: var(--gold); }
 .intro-text { max-width: 650px; color: #55483d; font-size: 1.05rem; line-height: 1.95; }
 .intro-text strong { color: var(--ink); font-weight: 700; }
 .formats { padding: 112px 0 120px; background: #121c2a; }
